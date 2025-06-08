@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monitor de Rede SNMP</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Incluindo a biblioteca Chart.js via CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+</head>
+<body>
+    <div class="main-container">
+        <h1>Consumo da Interface de Rede</h1>
+        
+        <!-- Canvas para o Gráfico -->
+        <div class="chart-wrapper">
+            <canvas id="realtimeChart"></canvas>
+        </div>
+        
+        <div class="controls">
+            <div class="config-row">
+                <label for="interface-selector">Interface:</label>
+                <select id="interface-selector">
+                    <option value="">Carregando interfaces...</option>
+                </select>
+            </div>
+            <div class="unit-selector">
+                <label for="unit">Unidade:</label>
+                <select id="unit">
+                    <option value="mbps" selected>Mbps</option>
+                    <option value="kbps">Kbps</option>
+                </select>
+            </div>
+            <div class="refresh-selector">
+                <label for="refresh-interval">Atualizar a cada:</label>
+                <select id="refresh-interval">
+                    <option value="1000">1 segundo</option>
+                    <option value="2000" selected>2 segundos</option>
+                    <option value="5000">5 segundos</option>
+                    <option value="10000">10 segundos</option>
+                    <option value="30000">30 segundos</option>
+                </select>
+            </div>
+        </div>
+        
+        <!-- Div para os dados SNMP detalhados -->
+        <div id="detailed-snmp-data">
+            
+            <p><strong>Carregando...</strong></p>
+        </div>
+
+        <!-- Mensagem de erro -->
+        <p id="error-message"></p>
+    </div>
+
+    <!-- Nosso script para atualizar o gráfico -->
+    <script src="script.js"></script>
+</body>
+</html>

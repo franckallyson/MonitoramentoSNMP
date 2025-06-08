@@ -1,0 +1,134 @@
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #f0f2f5;
+    color: #333;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.controls {
+    display: flex;
+    justify-content: space-between;
+}
+
+.refresh-selector,
+.config-row,
+.unit-selector {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    font-size: 0.95em;
+    color: #333;
+}
+
+.refresh-selector label,
+.config-row label,
+.unit-selector label {
+    font-weight: 500;
+}
+
+.refresh-selector select,
+.config-row select,
+.unit-selector select {
+    padding: 6px 10px;
+    font-size: 1em;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    color: #333;
+    transition: border-color 0.2s ease;
+}
+
+.refresh-selector select:focus,
+.config-row select:focus,
+.unit-selector select:focus {
+    outline: none;
+    border-color: #28a745;
+    box-shadow: 0 0 0 2px rgba(40, 167, 69, 0.25);
+}
+
+.main-container {
+    width: 95%;
+    max-width: 900px;
+    padding: 25px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+}
+
+h1 {
+    color: #1a2b4d;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.chart-wrapper {
+    position: relative;
+    height: 350px;
+    margin-bottom: 25px;
+}
+
+#error-message {
+    color: #dc3545;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    border-radius: 8px;
+    display: none; /* Oculto por padrão */
+}
+
+#detailed-snmp-data {
+    margin-top: 15px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    align-items: center;
+}
+
+#detailed-snmp-data p {
+    margin: 0;
+    font-size: 1.1em;
+    color: #555;
+}
+
+#detailed-snmp-data p strong {
+    color: #333;
+    display: block;
+    font-size: 0.8em;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+}
+
+#detailed-snmp-data .data-value {
+    font-weight: bold;
+    font-size: 1.5em;
+}
+
+#rx-value {
+    color: #007bff;
+}
+
+#tx-value {
+    color: #28a745;
+}
+
+#timestamp {
+    grid-column: 1 / -1; /* Ocupa as duas colunas */
+    text-align: right;
+    font-size: 0.8em;
+    color: #777;
+    margin-top: 10px;
+}
