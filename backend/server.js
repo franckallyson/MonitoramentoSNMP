@@ -62,7 +62,8 @@ app.get("/api/traffic", (req, res) => {
   const rxOID = `${rxOIDBase}.${req.query.interface || 1}`; // Padrão para interface 1
   const txOID = `${txOIDBase}.${req.query.interface || 1}`; // Padrão para interface 1
   const interfaceNow = req.query.interface; // Armazena a interface atual
-  
+  const refreshInterval = req.query.refreshTime || 1000
+
   console.log(req.query)
   session.get([rxOID, txOID], (err, varbinds) => {
     if (err) {
@@ -84,7 +85,7 @@ app.get("/api/traffic", (req, res) => {
     
     // Se já temos uma leitura anterior, podemos calcular a taxa
     if (lastRx !== null && lastTx !== null && lastTime !== null && lastInterface === interfaceNow) {
-      const deltaTime = (now - lastTime) / 1000; // Delta de tempo em segundos
+      const deltaTime = (now - lastTime) / refreshInterval / 1000; // Delta de tempo em segundos
       const unidade = (req.query.unidade || "mbps").toLowerCase();
       // Evita divisão por zero se o intervalo for muito curto
       if (deltaTime === 0) {

@@ -102,7 +102,7 @@ window.onload = function () {
         try {
             
             // A rota foi ajustada para /api/traffic
-            const response = await fetch(`/api/traffic?unidade=${currentUnit.toLowerCase()}&interface=${indexInterface}`);
+            const response = await fetch(`/api/traffic?unidade=${currentUnit.toLowerCase()}&interface=${indexInterface}&refreshTime=${FETCH_INTERVAL_MS}`);
            
             
             if (!response.ok) {
