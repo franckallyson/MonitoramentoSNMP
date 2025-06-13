@@ -85,7 +85,7 @@ app.get("/api/traffic", (req, res) => {
     
     // Se já temos uma leitura anterior, podemos calcular a taxa
     if (lastRx !== null && lastTx !== null && lastTime !== null && lastInterface === interfaceNow) {
-      const deltaTime = (now - lastTime) / refreshInterval / 1000; // Delta de tempo em segundos
+      const deltaTime = (now - lastTime) / refreshInterval ; // Delta de tempo em segundos
       const unidade = (req.query.unidade || "mbps").toLowerCase();
       // Evita divisão por zero se o intervalo for muito curto
       if (deltaTime === 0) {
@@ -98,10 +98,9 @@ app.get("/api/traffic", (req, res) => {
       const divisor = unidade === "kbps" ? 1_000 : 1_000_000;
       // Calcula a taxa em Megabits por segundo (Mbps)
       // (Bytes * 8 para obter bits) / tempo em segundos / 1_000_000 para obter Megabits
-      const rxRate = (Number(rxDelta) * 8) / deltaTime / divisor;
+      const rxRate = (Number(rxDelta) * 8) / deltaTime / divisor / (refreshInterval/1000);
       
-
-      const txRate = (Number(txDelta) * 8) / deltaTime / divisor;
+      const txRate = (Number(txDelta) * 8) / deltaTime / divisor / (refreshInterval/1000);
       
       // Atualiza os valores "antigos" para a próxima requisição
       lastRx = rxNow;
